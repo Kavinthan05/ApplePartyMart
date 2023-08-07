@@ -83,7 +83,7 @@ label .required{
 }
 img{
     max-width: 100%;
-    height: auto;
+    max-height: 270px;
     outline: none;
 }
 figure{
@@ -5157,7 +5157,7 @@ body.open-overlay #overlay{
 }
 .shopping-cart-container table td.product-thumbnail{
     text-align: left;
-    position: relative;
+    position: fixed;
     font-size: 0;
     line-height: 0;
 }
