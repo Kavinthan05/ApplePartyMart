@@ -97,14 +97,71 @@
                 <li class="menu-item search-menu-item" style="margin-left: -2%">
                     <!-- Header search bar section -->
                     <div class="header-search-bar layout-01">
-                        <form action="#" class="form-search" name="desktop-seacrh" method="get">
-                            <input type="text" name="s" class="input-text" value="" placeholder="Search">
-                            
-                            <script src="search.js"></script>
-                            <button type="submit" class="btn-submit">
+                       
+                            <input type="text" id="searchBox" name="s" class="input-text" placeholder="Search">
+
+                            <button class="btn-submit" onclick="searchAndScroll()">
                                 <i class="biolife-icon icon-search"></i>
                             </button>
-                        </form>
+
+                            <script>
+                               function searchAndScroll() {
+                                var searchBox = document.getElementById("searchBox").value;
+                                console.log(document.getElementById("searchBox").value);
+                                console.log("Click");
+                                const ulElement = document.querySelector('.products-list');
+                                const liElements = ulElement.querySelectorAll('.pr-name');
+                                
+                                console.log(liElements);
+
+                                liElements.forEach(li => {
+                                    const text = li.textContent.toLowerCase();
+                                    console.log(text);
+                                    if (text.includes(searchBox)) {
+                                        li.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        return;
+                                    }
+                                });
+                            }
+
+          
+
+                            </script>
+
+                            <script type="application/javascript">
+                                function submitForm(event) {
+                                    var form = $( "#contactForm" );
+                                    form.validate();
+                                
+                                    if(!form.valid()) return false;	
+                                    
+                                    
+                                
+                                    
+                                    var datas = form.serialize();
+                                    
+                                    $.ajax({
+                                        type: 'post',
+                                        data: datas,
+                                        url: 'php/send.php',
+                                        success: function(data){ 
+                                                $('#contactForm').css("display","none");
+                                                $('#successDiv').css("display","block");
+                                        }
+                                    });
+                                    
+                                    event.preventDefault();
+                                    
+                                    return false;
+                                }
+
+                                function clearForm() {
+                                    var validator = $( "#contactForm" ).validate();
+                                    validator.resetForm();
+                                }
+
+                            </script>
+                        
                     </div>
                 </li>
             </ul>
@@ -192,22 +249,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="product-item">
-                                        <div class="contain-product layout-default">
-                                            <div class="product-thumb">
-                                                <a  class="link-to-product">
-                                                    <img src="assets/images/product-line/partyProps.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">
-                                                </a>
-                                            </div>
-                                            <div class="info">
-                                                <b class="categories">Party Decorations</b>
-                                                <h4 class="product-title"><a  class="pr-name">Party Props</a></h4>
-                                                <div class="price ">
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </li>
+                                    
                                     <li class="product-item">
                                         <div class="contain-product layout-default">
                                             <div class="product-thumb">
@@ -233,13 +275,31 @@
                                             </div>
                                             <div class="info">
                                                 <b class="categories">Party Decorations</b>
-                                                <h4 class="product-title"><a  class="pr-name">Plates</a></h4>
+                                                <h4 class="product-title"><a  class="pr-name">Table Items</a></h4>
                                                 <div class="price ">
                                                 </div>
                                                 
                                             </div>
                                         </div>
                                     </li>
+
+                                    <li class="product-item">
+                                        <div class="contain-product layout-default">
+                                            <div class="product-thumb">
+                                                <a  class="link-to-product">
+                                                    <img src="assets/images/product-line/partyHats.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">
+                                                </a>
+                                            </div>
+                                            <div class="info">
+                                                <b class="categories">Party Decorations</b>
+                                                <h4 class="product-title"><a  class="pr-name">Party Hats</a></h4>
+                                                <div class="price ">
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </li>
+
                                     <li class="product-item">
                                         <div class="contain-product layout-default">
                                             <div class="product-thumb">
@@ -249,7 +309,7 @@
                                             </div>
                                             <div class="info">
                                                 <b class="categories">Party Decorations</b>
-                                                <h4 class="product-title"><a  class="pr-name">Sweet 16 Sash + Headband</a></h4>
+                                                <h4 class="product-title"><a  class="pr-name">Tiaras and Other Accessories</a></h4>
                                                 <div class="price ">
                                                 </div>
                                                 
@@ -272,22 +332,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="product-item">
-                                        <div class="contain-product layout-default">
-                                            <div class="product-thumb">
-                                                <a  class="link-to-product">
-                                                    <img src="assets/images/product-line/swirlBirthdayDecorations.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">
-                                                </a>
-                                            </div>
-                                            <div class="info">
-                                                <b class="categories">Party Decorations</b>
-                                                <h4 class="product-title"><a  class="pr-name">Swirls Birthday Decorations </a></h4>
-                                                <div class="price ">
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </li>
+                                    
                                     <li class="product-item">
                                         <div class="contain-product layout-default">
                                             <div class="product-thumb">
@@ -320,22 +365,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="product-item">
-                                        <div class="contain-product layout-default">
-                                            <div class="product-thumb">
-                                                <a  class="link-to-product">
-                                                    <img src="assets/images/product-line/cups.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">
-                                                </a>
-                                            </div>
-                                            <div class="info">
-                                                <b class="categories">Party Decorations</b>
-                                                <h4 class="product-title"><a  class="pr-name">Cups</a></h4>
-                                                <div class="price ">
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </li>
+                                    
                                     <li class="product-item">
                                         <div class="contain-product layout-default">
                                             <div class="product-thumb">
@@ -1178,11 +1208,11 @@
                     <ul class="products-list">
 
 
-                        <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6" style="padding-top: 10px;">
+                        <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6" >
                             <div class="contain-product layout-default">
                                 <div class="product-thumb">
                                     <a  class="link-to-product">
-                                        <img src="assets/images/product-line/balloons.png" alt="dd" width="270" height="270" class="product-thumnail">
+                                        <img src="assets/images/product-line/balloons.jpg" alt="dd" width="270" height="270" class="product-thumnail">
                                     </a>
                                 </div>
                                 <div class="info">
@@ -1217,26 +1247,12 @@
                                 </div>
                                 <div class="info">
                                     <b class="categories">Balloons</b>
-                                    <h4 class="product-title"><a  class="pr-name">Circle Style</a></h4>
+                                    <h4 class="product-title"><a  class="pr-name">Jumbo Balloons</a></h4>
                                     
                                 </div>
                             </div>
                         </li>
 
-                        <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="contain-product layout-default">
-                                <div class="product-thumb">
-                                    <a  class="link-to-product">
-                                        <img src="assets/images/product-line/balloonLetters.jpg" alt="dd" width="270" height="270" class="product-thumnail">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <b class="categories">Balloons</b>
-                                    <h4 class="product-title"><a  class="pr-name">Letter Balloons</a></h4>
-                                    
-                                </div>
-                            </div>
-                        </li>
 
                         <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="contain-product layout-default">
@@ -1298,16 +1314,17 @@
                             </div>
                         </li>
 
+
                         <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="contain-product layout-default">
                                 <div class="product-thumb">
                                     <a  class="link-to-product">
-                                        <img src="assets/images/product-line/birthdayBalloonGiant.webp" alt="dd" width="270" height="270" class="product-thumnail">
+                                        <img src="assets/images/product-line/seasonalBalloons.jpg" alt="dd" width="270" height="270" class="product-thumnail">
                                     </a>
                                 </div>
                                 <div class="info">
                                     <b class="categories">Balloons</b>
-                                    <h4 class="product-title"><a  class="pr-name">Birthday Balloons - Jumbo</a></h4>
+                                    <h4 class="product-title"><a  class="pr-name">Seasonal Themes</a></h4>
                                     
                                 </div>
                             </div>
@@ -1377,6 +1394,60 @@
                                 </div>
                             </div>
                         </li>
+
+                        <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                            <div class="contain-product layout-default">
+                                <div class="product-thumb">
+                                    <a  class="link-to-product">
+                                        <img src="assets/images/product-line/seasonalCards.jpg" alt="dd" width="270" height="270" class="product-thumnail">
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <b class="categories">Gifts</b>
+                                    <h4 class="product-title"><a  class="pr-name">Seasonal Cards</a></h4>
+                                   
+                                  
+                                    
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                            <div class="contain-product layout-default">
+                                <div class="product-thumb">
+                                    <a  class="link-to-product">
+                                        <img src="assets/images/product-line/giftBags.jpg" alt="dd" width="270" height="270" class="product-thumnail">
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <b class="categories">Gifts</b>
+                                    <h4 class="product-title"><a  class="pr-name">Gift Bags</a></h4>
+                                   
+                                  
+                                    
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                            <div class="contain-product layout-default">
+                                <div class="product-thumb">
+                                    <a  class="link-to-product">
+                                        <img src="assets/images/product-line/giftWrap.jpg" alt="dd" width="270" height="270" class="product-thumnail">
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <b class="categories">Gifts</b>
+                                    <h4 class="product-title"><a  class="pr-name">Gift Wrap</a></h4>
+                                   
+                                  
+                                    
+                                </div>
+                            </div>
+                        </li>
+
+                        
+
                         </ul>
                 </div>
 
@@ -1428,7 +1499,7 @@
                     <!--Contact form-->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="contact-form-container sm-margin-top-112px">
-                            <form action="#" name="frm-contact" >
+                            <form id="contactForm" method="POST" action="php/send.php" target="form_processing" >
                                 <p class="form-row">
                                     <input type="text" name="name" value="" placeholder="Your Name" class="txt-input">
                                 </p>
@@ -1436,13 +1507,13 @@
                                     <input type="email" name="email" value="" placeholder="Email Address" class="txt-input">
                                 </p>
                                 <p class="form-row">
-                                    <input type="tel" name="phone" value="" placeholder="Phone Number" class="txt-input">
+                                    <input type="text" name="phonenumber" value="" placeholder="Phone Number" class="txt-input">
                                 </p>
                                 <p class="form-row">
-                                    <textarea name="mes" id="mes-1" cols="30" rows="9" placeholder="Leave Message"></textarea>
+                                    <textarea name="message" id="mes-1" cols="30" rows="9" placeholder="Leave Message"></textarea>
                                 </p>
                                 <p class="form-row">
-                                    <button class="btn btn-submit" type="submit">send message</button>
+                                    <button class="btn btn-submit" type="submit" onclick="return submitForm(event)">Send Message</button>
                                 </p>
                             </form>
                         </div>

@@ -1,29 +1,15 @@
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
 
-// Sample data for demonstration purposes
-const data = [
-    'Balloons',
-    'Party Decorations',
-    'Gifts'
-];
-
-function displayResults(results) {
-    // Clear previous results
-    searchResults.innerHTML = '';
-
-    // Display new results
-    results.forEach(result => {
-        const li = document.createElement('li');
-        li.textContent = result;
-        searchResults.appendChild(li);
-    });
-}
-
-function handleSearch() {
-    const query = searchInput.value.toLowerCase();
-    const results = data.filter(item => item.toLowerCase().includes(query));
-    displayResults(results);
-}
-
-searchInput.addEventListener('input', handleSearch);
+    function scrollToSection() {
+      const searchBox = document.getElementById('searchBox');
+      const searchTerm = searchBox.value.toLowerCase();
+      const sections = document.querySelectorAll('section');
+    
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const sectionText = section.innerText.toLowerCase();
+    
+        if (sectionText.includes(searchTerm)) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          break;
+        }
+      }}
