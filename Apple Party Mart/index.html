@@ -92,75 +92,18 @@
                     <a href="#gifts" class="menu-name" data-title="Demo">Gifts</a>
                 </li>
                 <li class="menu-item contact-menu-item">
-                    <a href="#contact">Contact</a>
+                    <a href="#contactForm">Contact</a>
                 </li>
                 <li class="menu-item search-menu-item" style="margin-left: -2%">
                     <!-- Header search bar section -->
                     <div class="header-search-bar layout-01">
-                       
                             <input type="text" id="searchBox" name="s" class="input-text" placeholder="Search">
 
-                            <button class="btn-submit" onclick="searchAndScroll()">
+                            <button id="searchButton" class="btn-submit" >
                                 <i class="biolife-icon icon-search"></i>
                             </button>
 
-                            <script>
-                               function searchAndScroll() {
-                                var searchBox = document.getElementById("searchBox").value;
-                                console.log(document.getElementById("searchBox").value);
-                                console.log("Click");
-                                const ulElement = document.querySelector('.products-list');
-                                const liElements = ulElement.querySelectorAll('.pr-name');
-                                
-                                console.log(liElements);
-
-                                liElements.forEach(li => {
-                                    const text = li.textContent.toLowerCase();
-                                    console.log(text);
-                                    if (text.includes(searchBox)) {
-                                        li.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                        return;
-                                    }
-                                });
-                            }
-
-          
-
-                            </script>
-
-                            <script type="application/javascript">
-                                function submitForm(event) {
-                                    var form = $( "#contactForm" );
-                                    form.validate();
-                                
-                                    if(!form.valid()) return false;	
-                                    
-                                    
-                                
-                                    
-                                    var datas = form.serialize();
-                                    
-                                    $.ajax({
-                                        type: 'post',
-                                        data: datas,
-                                        url: 'php/send.php',
-                                        success: function(data){ 
-                                                $('#contactForm').css("display","none");
-                                                $('#successDiv').css("display","block");
-                                        }
-                                    });
-                                    
-                                    event.preventDefault();
-                                    
-                                    return false;
-                                }
-
-                                function clearForm() {
-                                    var validator = $( "#contactForm" ).validate();
-                                    validator.resetForm();
-                                }
-
-                            </script>
+                            
                         
                     </div>
                 </li>
@@ -192,7 +135,7 @@
             <!--Block 02: Banner-->
             <div class="special-slide">
                 <div class="container">
-                    <img src="assets/images/logo-full.jpg"/>
+                    <img style="max-height: 70%;" src="assets/images/logo-full.jpg"/>
                     
                 </div>
             </div>
@@ -370,12 +313,12 @@
                                         <div class="contain-product layout-default">
                                             <div class="product-thumb">
                                                 <a  class="link-to-product">
-                                                    <img src="assets/images/product-line/letterBanner.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">
+                                                    <img src="assets/images/product-line/hangingDecorations.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">
                                                 </a>
                                             </div>
                                             <div class="info">
                                                 <b class="categories">Party Decorations</b>
-                                                <h4 class="product-title"><a  class="pr-name">Letter Banner</a></h4>
+                                                <h4 class="product-title"><a  class="pr-name">Hanging Decorations</a></h4>
                                                 <div class="price ">
                                                 </div>
                                                 
@@ -1723,6 +1666,52 @@
     <script src="assets/js/slick.min.js"></script>
     <script src="assets/js/biolife.framework.js"></script>
     <script src="assets/js/functions.js"></script>
+
+    <script type="application/javascript">
+        function submitForm(event) {
+            var form = $( "#contactForm" );
+            form.validate();
+        
+            if(!form.valid()) return false;	
+            
+            
+        
+            
+            var datas = form.serialize();
+            
+            $.ajax({
+                type: 'post',
+                data: datas,
+                url: 'php/send.php',
+                success: function(data){ 
+                        $('#contactForm').css("display","none");
+                        $('#successDiv').css("display","block");
+                }
+            });
+            
+            event.preventDefault();
+            
+            return false;
+        }
+
+        function clearForm() {
+            var validator = $( "#contactForm" ).validate();
+            validator.resetForm();
+        }
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+       
+       $("#searchButton").click(function () {
+                var inputString = $("#searchBox").val();
+                alert(inputString);
+            });
+        
+
+    </script>
 </body>
 
 </html>
