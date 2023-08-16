@@ -14546,6 +14546,29 @@ body.open-quickview-block .biolife-quickview-block{
     }
 }
 
+
+
+@media (max-width: 800px) {
+
+    .hide-display {
+
+        display: none;
+    }
+
+    .mobile-padding {
+
+        margin-bottom: 20px;
+    }
+
+    .img-resize {
+
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+}
+
+
 @media ( max-width: 1199px) {
     .products-list.biolife-carousel.nav-none-after-1k2 .slick-arrow.biolife-icon{
         display: none !important;
